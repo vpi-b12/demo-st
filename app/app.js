@@ -13,14 +13,14 @@ angular.module('iqrmpApp', [
     'toastr'
 ]);
 
-angular.module('iqrmpApp')
+angular.module('demoApp')
     .config(['toastrConfig', function (toastrConfig) {
         angular.extend(toastrConfig, {
             progressBar: true
         });
     }]);
 
-angular.module('iqrmpApp')
+angular.module('demoApp')
     .config(['$urlRouterProvider', '$httpProvider', function ($urlRouterProvider, $httpProvider) {
 
         $urlRouterProvider.otherwise(function ($injector) {
@@ -45,7 +45,7 @@ angular.module('iqrmpApp')
     }]);
 
 // CurrentUser management
-angular.module('iqrmpApp')
+angular.module('demoApp')
     .run(['$rootScope', '$state', '$resource', '$window', 'User',
         function ($rootScope, $state, $resource, $window, User) {
 
