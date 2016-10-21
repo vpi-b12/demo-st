@@ -55,7 +55,7 @@ def not_found(exc, request):
     }
 
 @view_config(context=HTTPInternalServerError, renderer='json')
-def not_found(exc, request):
+def server_error(exc, request):
     request.response.status_code = 500
 
     LOG.error(str(traceback.format_exc(request.exc_info)))
