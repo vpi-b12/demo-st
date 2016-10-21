@@ -58,10 +58,9 @@ class UserView(PrivateView):
             roles=body.get('roles'),
             company=body.get('company', user.company)['name']
         )
-    
 
         return {'user': User.objects.exclude('password').get(id=user_id)}
-        
+
     @view_config(route_name='user_me', request_method='GET')
     def me(self):
         return {'user': self.logged_user}
