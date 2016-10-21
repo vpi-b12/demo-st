@@ -53,3 +53,26 @@ def not_found(exc, request):
         'explanation': exc.explanation,
         'status': 404,
     }
+
+@view_config(context=HTTPInternalServerError, renderer='json')
+def not_found(exc, request):
+    request.response.status_code = 500
+
+    LOG.error(str(traceback.format_exc(request.exc_info)))
+    return {
+        'error': 'Internal Server Error',
+        'message': exc.detail,
+        'explanation': exc.explanation,
+        'status': 500,
+    }
+
+@view_config(context=Exception, renderer='json')
+def failed_validation(exc, request):
+    request.response.status_code = 500
+
+    LOG.error(str(traceback.format_exc(request.exc_info)))
+    return {
+        'error': 'Internal Server Error',
+        'message': str(exc),
+        'status': 500,
+    }
